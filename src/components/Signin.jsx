@@ -161,7 +161,7 @@ function SignupForm(props) {
       <ErrorMessage error={passwordError} />
       <InputRePassword value={rePassword} onChange={change} />
       <ErrorMessage error={rePasswordError} />
-      <InputSubmit value="Sign Up" /><br />
+      <InputSubmit value="Sign Up" />
       <p className="submit-message">{errorMessage}</p>
     </form>
   );
@@ -250,7 +250,7 @@ function SigninForm(props) {
             updateErrorMessage(message);
           });
         } else {
-          updateErrorMessage("Incorrect username or password");
+          updateErrorMessage(message);
         }
       });
     }
@@ -275,14 +275,14 @@ function FormControl() {
   const [barTransition, updateBarTransition] = useState({ transform: "translateX(0%)" });
   const [signinTransition, updatetSigninTransition] = useState({ transform: "translateX(0%)" });
   const [signupTransition, updatetSignupTransition] = useState({ transform: "translateX(100%)" });
-  const [confirmTransition, updatetConfimTransition] = useState({ transform: "translateY(280%)" });
+  const [confirmTransition, updatetConfimTransition] = useState({ transform: "translateY(400%)" });
 
   useEffect(() => {
     if (formState === "signUp") {
       updateBarTransition({ transform: "translateX(100%)" });
       updatetSigninTransition({ transform: "translateX(-100%)" });
       updatetSignupTransition({ transform: "translateX(0%)" });
-      updatetConfimTransition({ transform: "translateY(280%)" })
+      updatetConfimTransition({ transform: "translateY(400%)" })
     } else if (formState === "confirmSignUp") {
       updatetSigninTransition({ transform: "translateX(-100%)" });
       updatetSignupTransition({ transform: "translateX(100%)" });
@@ -291,7 +291,7 @@ function FormControl() {
       updateBarTransition({ transform: "translateX(0%)" });
       updatetSigninTransition({ transform: "translateX(0%)" });
       updatetSignupTransition({ transform: "translateX(100%)" });
-      updatetConfimTransition({ transform: "translateY(280%)" })
+      updatetConfimTransition({ transform: "translateY(400%)" })
     }
   }, [formState]);
 

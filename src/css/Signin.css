@@ -11,7 +11,7 @@
     text-align: center;
     font-style: italic;
     font-weight: bold;
-    font-size: 70px;
+    font-size: 50px;
     color: rgba(255, 255, 255, 0.76);
     margin: 30px;
 }
@@ -57,13 +57,13 @@
 
 .input-form label{
     color: rgba(255, 255, 255, 0.76);
-    font-size: 20px;
+    font-size: 16px;
     margin: 0%;
 }
 
 .input-form span{
     color: rgba(247, 58, 33, 0.952);
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .input-box{
@@ -125,20 +125,24 @@
 .submit-message{
     text-align: center;
     color: rgba(247, 58, 33, 0.952);
-    font-size: 16px;
+    font-size: 14px;
 }
 
 
 /* Adjustment based on screen size */
 @media screen and (max-width: 1200px) {
     .greeting{
-        font-size: 55px;
+        font-size: 45px;
+    }
+
+    .submit-message{
+        font-size: 12px;
     }
 }
 
 @media screen and (max-width: 992px) {
     .greeting{
-        font-size: 40px;
+        font-size: 35px;
     }
 }
 
@@ -152,7 +156,7 @@
     }
 
     .input-form label{
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .input-form span{
@@ -179,6 +183,10 @@
     }
 
     .input-form span{
+        font-size: 12px;
+    }
+
+    .submit-message{
         font-size: 12px;
     }
 }
