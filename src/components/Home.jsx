@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Auth } from 'aws-amplify';
 import {
@@ -12,15 +12,17 @@ function Home() {
   const history = useHistory();
   const [userName, updateUserName] = useState("");
 
-  //Check user sign in status
-  checkUser().then((message) => {
-    if (message === "") {
-      Auth.currentAuthenticatedUser().then((user) => {
-        updateUserName(user.username);
-      });
-    } else {
-      history.push("/signin");
-    }
+  useEffect(() => {
+    //Check user sign in status
+    checkUser().then((message) => {
+      if (message === "") {
+        Auth.currentAuthenticatedUser().then((user) => {
+          updateUserName(user.username);
+        });
+      } else {
+        history.push("/signin");
+      }
+    });
   });
 
   function submit(e) {

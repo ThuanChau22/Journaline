@@ -325,11 +325,13 @@ function FormControl() {
 function Signin() {
   const history = useHistory();
 
-  //Check user sign in status
-  checkUser().then((message) => {
-    if (message === "") {
-      history.push("/");
-    }
+  useEffect(() => {
+    //Check user sign in status
+    checkUser().then((message) => {
+      if (message === "") {
+        history.push("/");
+      }
+    });
   });
 
   return (
