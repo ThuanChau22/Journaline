@@ -179,6 +179,11 @@ function ConfirmForm(props) {
       updateAuthCode("");
       updateErrorMessage("");
     }
+    if (props.message !== "") {
+      updateErrorMessage(props.message);
+      props.updateMessage("");
+    }
+
   }, [props]);
 
   function submit(e) {
@@ -247,7 +252,7 @@ function SigninForm(props) {
           props.updateFormState("confirmSignUp");
           props.updateUserName(userName);
           resendConfirmationCode(userName).then((message) => {
-            updateErrorMessage(message);
+            props.updateMessage(message);
           });
         } else {
           updateErrorMessage("Incorrect username or password");
@@ -272,6 +277,7 @@ function FormControl() {
   const [formState, updateFormState] = useState("signIn");
   const [userName, updateUserName] = useState("");
   const [password, updatePassword] = useState("");
+  const [message, updateMessage] = useState("");
   const [barTransition, updateBarTransition] = useState({ transform: "translateX(0%)" });
   const [signinTransition, updatetSigninTransition] = useState({ transform: "translateX(0%)" });
   const [signupTransition, updatetSignupTransition] = useState({ transform: "translateX(100%)" });
@@ -305,11 +311,12 @@ function FormControl() {
       <div className="sliding-form">
         <div id="signin-form" style={signinTransition}>
           <SigninForm formState={formState} updateFormState={updateFormState}
-            updateUserName={updateUserName} />
+            updateUserName={updateUserName} updateMessage={updateMessage} />
         </div>
         <div id="confirm-form" style={confirmTransition}>
           <ConfirmForm formState={formState} updateFormState={updateFormState}
-            userName={userName} password={password} />
+            userName={userName} password={password}
+            message={message} updateMessage={updateMessage} />
         </div>
         <div id="signup-form" style={signupTransition}>
           <SignupForm formState={formState} updateFormState={updateFormState}
