@@ -161,7 +161,7 @@ function SignupForm(props) {
       <ErrorMessage error={passwordError} />
       <InputRePassword value={rePassword} onChange={change} />
       <ErrorMessage error={rePasswordError} />
-      <InputSubmit value="Sign Up" /><br />
+      <InputSubmit value="Sign Up" />
       <p className="submit-message">{errorMessage}</p>
     </form>
   );
@@ -179,11 +179,6 @@ function ConfirmForm(props) {
       updateAuthCode("");
       updateErrorMessage("");
     }
-    if (props.message !== "") {
-      updateErrorMessage(props.message);
-      props.updateMessage("");
-    }
-
   }, [props]);
 
   function submit(e) {
@@ -252,10 +247,10 @@ function SigninForm(props) {
           props.updateFormState("confirmSignUp");
           props.updateUserName(userName);
           resendConfirmationCode(userName).then((message) => {
-            props.updateMessage(message);
+            updateErrorMessage(message);
           });
         } else {
-          updateErrorMessage("Incorrect username or password");
+          updateErrorMessage(message);
         }
       });
     }
@@ -277,18 +272,17 @@ function FormControl() {
   const [formState, updateFormState] = useState("signIn");
   const [userName, updateUserName] = useState("");
   const [password, updatePassword] = useState("");
-  const [message, updateMessage] = useState("");
   const [barTransition, updateBarTransition] = useState({ transform: "translateX(0%)" });
   const [signinTransition, updatetSigninTransition] = useState({ transform: "translateX(0%)" });
   const [signupTransition, updatetSignupTransition] = useState({ transform: "translateX(100%)" });
-  const [confirmTransition, updatetConfimTransition] = useState({ transform: "translateY(280%)" });
+  const [confirmTransition, updatetConfimTransition] = useState({ transform: "translateY(400%)" });
 
   useEffect(() => {
     if (formState === "signUp") {
       updateBarTransition({ transform: "translateX(100%)" });
       updatetSigninTransition({ transform: "translateX(-100%)" });
       updatetSignupTransition({ transform: "translateX(0%)" });
-      updatetConfimTransition({ transform: "translateY(280%)" })
+      updatetConfimTransition({ transform: "translateY(400%)" })
     } else if (formState === "confirmSignUp") {
       updatetSigninTransition({ transform: "translateX(-100%)" });
       updatetSignupTransition({ transform: "translateX(100%)" });
@@ -297,7 +291,7 @@ function FormControl() {
       updateBarTransition({ transform: "translateX(0%)" });
       updatetSigninTransition({ transform: "translateX(0%)" });
       updatetSignupTransition({ transform: "translateX(100%)" });
-      updatetConfimTransition({ transform: "translateY(280%)" })
+      updatetConfimTransition({ transform: "translateY(400%)" })
     }
   }, [formState]);
 
@@ -311,12 +305,11 @@ function FormControl() {
       <div className="sliding-form">
         <div id="signin-form" style={signinTransition}>
           <SigninForm formState={formState} updateFormState={updateFormState}
-            updateUserName={updateUserName} updateMessage={updateMessage} />
+            updateUserName={updateUserName} />
         </div>
         <div id="confirm-form" style={confirmTransition}>
           <ConfirmForm formState={formState} updateFormState={updateFormState}
-            userName={userName} password={password}
-            message={message} updateMessage={updateMessage} />
+            userName={userName} password={password} />
         </div>
         <div id="signup-form" style={signupTransition}>
           <SignupForm formState={formState} updateFormState={updateFormState}
@@ -332,13 +325,11 @@ function FormControl() {
 function Signin() {
   const history = useHistory();
 
-  useEffect(() => {
-    //Check user sign in status
-    checkUser().then((message) => {
-      if (message === "") {
-        history.push("/");
-      }
-    });
+  //Check user sign in status
+  checkUser().then((message) => {
+    if (message === "") {
+      history.push("/");
+    }
   });
 
   return (
