@@ -1,15 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { Redirect } from 'react-router-dom';
+import React from "react";
+import { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import { Container, Row, Col } from "react-bootstrap";
 import "../css/Signin.css";
-import { validateUserName, validateEmail, validatePassword, validateRePassword }
-  from "../js/validation.js";
-import { signUp, confirmSignUp, resendConfirmationCode, signIn, checkUser } from "../js/authentication";
+import {
+  validateUserName,
+  validateEmail,
+  validatePassword,
+  validateRePassword
+} from "../js/validation.js";
+import {
+  signUp,
+  confirmSignUp,
+  resendConfirmationCode,
+  signIn,
+  checkUser
+} from "../js/authentication";
 
 function InputUserName(props) {
   return (
     <div>
-      <label>Username</label><br />
+      <label>Username *</label><br />
       <input className="input-box" name="userName" type="text" placeholder="Enter username"
         value={props.value} onChange={props.onChange} /><br />
     </div>
@@ -19,7 +30,7 @@ function InputUserName(props) {
 function InputEmail(props) {
   return (
     <div>
-      <label>Email</label><br />
+      <label>Email *</label><br />
       <input className="input-box" name="email" type="email" placeholder="Enter email"
         value={props.value} onChange={props.onChange} /><br />
     </div>
@@ -29,7 +40,7 @@ function InputEmail(props) {
 function InputPassword(props) {
   return (
     <div>
-      <label>Password</label><br />
+      <label>Password *</label><br />
       <input className="input-box" name="password" type="password" placeholder="Enter password"
         value={props.value} onChange={props.onChange} /><br />
     </div>
@@ -39,7 +50,7 @@ function InputPassword(props) {
 function InputRePassword(props) {
   return (
     <div>
-      <label>Confirm Password</label><br />
+      <label>Confirm Password *</label><br />
       <input className="input-box" name="rePassword" type="password" placeholder="Re-enter password"
         value={props.value} onChange={props.onChange} /><br />
     </div>
@@ -71,6 +82,8 @@ function InputConfirmationCode(props) {
   );
 }
 
+
+//Handle Sign Up
 function SignupForm(props) {
   const [userName, updateUserName] = useState("");
   const [email, updateEmail] = useState("");
@@ -154,10 +167,12 @@ function SignupForm(props) {
   );
 }
 
+
+//Handle Sign Up Confirmation
 function ConfirmForm(props) {
+  const history = useHistory();
   const [authCode, updateAuthCode] = useState("");
   const [errorMessage, updateErrorMessage] = useState("");
-  const [isSignIn, updateIsSignIn] = useState(false);
 
   useEffect(() => {
     if (props.formState !== "confirmSignUp") {
@@ -168,12 +183,13 @@ function ConfirmForm(props) {
 
   function submit(e) {
     e.preventDefault();
+    //Call Confirm Sign Up
     confirmSignUp(props.userName, authCode).then((message) => {
       updateErrorMessage(message);
       if (message === "") {
         signIn(props.userName, props.password).then((message) => {
           if (message === "") {
-            updateIsSignIn(true);
+            history.push("/");
           }
         });
       }
@@ -182,13 +198,10 @@ function ConfirmForm(props) {
 
   function reSubmit(e) {
     e.preventDefault();
+    //Call Resend Confirm Code
     resendConfirmationCode(props.userName).then((message) => {
       updateErrorMessage(message);
     });
-  }
-
-  if (isSignIn) {
-    return <Redirect to="/" />;
   }
 
   return (
@@ -206,11 +219,13 @@ function ConfirmForm(props) {
   );
 }
 
+
+//Handle Sign In
 function SigninForm(props) {
+  const history = useHistory();
   const [userName, updateUserName] = useState("");
   const [password, updatePassword] = useState("");
   const [errorMessage, updateErrorMessage] = useState("");
-  const [isSignIn, updateIsSignIn] = useState(false);
 
   useEffect(() => {
     if (props.formState !== "signIn") {
@@ -222,11 +237,12 @@ function SigninForm(props) {
 
   function submit(e) {
     e.preventDefault();
+    updateErrorMessage("");
     if (userName !== "" && password !== "") {
       //Call Sign In
       signIn(userName, password).then((message) => {
         if (message === "") {
-          updateIsSignIn(true);
+          history.push("/");
         } else if (message === "User is not confirmed.") {
           props.updateFormState("confirmSignUp");
           props.updateUserName(userName);
@@ -240,10 +256,6 @@ function SigninForm(props) {
     }
   }
 
-  if (isSignIn) {
-    return <Redirect to="/" />;
-  }
-
   return (
     <form className="input-form" method="post" onSubmit={submit}>
       <InputUserName value={userName} onChange={(e) => updateUserName(e.target.value)} /><br />
@@ -254,6 +266,8 @@ function SigninForm(props) {
   );
 }
 
+
+//Controlling Form Transitions
 function FormControl() {
   const [formState, updateFormState] = useState("signIn");
   const [userName, updateUserName] = useState("");
@@ -306,19 +320,17 @@ function FormControl() {
   );
 }
 
+
+//Main Component
 function Signin() {
-  const [isSignin, updateIsSignin] = useState(false);
+  const history = useHistory();
+
+  //Check user sign in status
   checkUser().then((message) => {
     if (message === "") {
-      updateIsSignin(true);
-    } else {
-      updateIsSignin(false);
+      history.push("/");
     }
   });
-
-  if (isSignin) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <Container fluid className="signin-page">

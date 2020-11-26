@@ -1,55 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { Redirect, Link } from "react-router-dom";
-import { checkUser, signOut } from "../js/authentication";
+import React from "react";
+import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Auth } from 'aws-amplify';
+import {
+  checkUser,
+  signOut
+} from "../js/authentication";
 
-function SignOut(props) {
-  function submit(e) {
-    e.preventDefault();
-    signOut().then((message) => {
-      if (message === "") {
-        props.updateIsSignin(false);
-      }
-    });
-  }
-
-  if (!props.isSignin) {
-    return <Redirect to="/signin" />;
-  }
-
-  return (
-    <div>
-      <form method="post" onSubmit={submit}>
-        <input type="submit" name="userName" value="Sign Out" />
-      </form>
-    </div>
-  );
-}
 
 function Home() {
-  const [isSignin, updateIsSignin] = useState(true);
+  const history = useHistory();
   const [userName, updateUserName] = useState("");
+
+  //Check user sign in status
   checkUser().then((message) => {
     if (message === "") {
-      updateIsSignin(true);
-    } else {
-      updateIsSignin(false);
-    }
-  });
-
-  useEffect(() => {
-    if (isSignin) {
       Auth.currentAuthenticatedUser().then((user) => {
         updateUserName(user.username);
       });
+    } else {
+      history.push("/signin");
     }
   });
+
+  function submit(e) {
+    e.preventDefault();
+    //Call Sign Out
+    signOut().then((message) => {
+      if (message === "") {
+        history.push("/signin");
+      }
+    });
+  }
 
   return (
     <div>
       <h3>Welcome, {userName}</h3>
       <Link to="/signin">Signin</Link>
-      <SignOut isSignin={isSignin} updateIsSignin={updateIsSignin} />
+      <form method="post" onSubmit={submit}>
+        <input type="submit" name="userName" value="Sign Out" />
+      </form>
     </div>
   );
 }
