@@ -1,0 +1,13 @@
+.Homepage{
+    padding: 60px 0;
+    background-image: url('../images/journal.jpg');
+    background-size: cover;
+    height: 100vh;
+}
+
+
+.Homepage .btnUser{
+    border-radius: 35px;
+    margin-left: 10px;
+    
+}
