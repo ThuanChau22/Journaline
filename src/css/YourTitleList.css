@@ -1,0 +1,14 @@
+.yourtilelist{
+    padding: 60px 0;
+    background-image: url('./journal.jpg');
+    background-size: cover;
+    height: 100vh;
+}
+
+.list-body{
+    height: 500px;
+    width: 500px;
+    margin-top: 20px;
+    margin-left: 300px;
+    background-color: saddlebrown;
+}
