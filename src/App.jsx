@@ -29,38 +29,6 @@ function App() {
   );
 }
 
-// export default function Routes() {
-//   return (
-//     <Switch>
-//       <Route exact path="/">
-//         <Home />
-//       </Route>
-//       <Route exact path="/signin">
-//        <Signin />
-//        </Route>
-//       <Route exact path="/homepage">
-//         <Homepage />
-//       </Route>
-//       <Route exact path="/yourJournal">
-//         <YourJournal />
-//       </Route>
-//       <Route exact path="/yourtitlelist">
-//         <YourTitleList />
-//       </Route>
-//        <Route exact path="/composeJournal">
-//         <ComposeJournal />
-//         </Route>
-//       <Route exact path="/otherusertitlelist">
-//         <OtherUserTitleList />
-//       </Route>
-//         <Route exact path="/otheruserentry">
-//         <OtherUserEntry />
-//         </Route>
-//         <Route>
-//           <NotFound />
-//         </Route>
-//     </Switch>
-//   );
-// }
+
 
 export default App;
