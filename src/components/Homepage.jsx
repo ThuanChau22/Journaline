@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
-import "..css/Homepage.css";
+import "../css/Homepage.css";
 import Card from 'react-bootstrap/Card'
 import CardColumns from 'react-bootstrap/CardColumns'
 
@@ -10,12 +10,10 @@ export default function Homepage() {
 
     return(
         <div className = "Homepage">
-            
             <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="primary">Search</Button>
             <Button className="btnUser" variant="info" href="/yourJournal">User</Button>
- 
             </Form>
             <br></br>
             <br></br>

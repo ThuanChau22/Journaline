@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import Card from 'react-bootstrap/Card'
-import "..css/OtherUserEntry.css";
+import "../css/OtherUserEntry.css";
 
 export default function OtherUserEntry() {
 
