@@ -1,5 +1,39 @@
-.ComposeJournal form #content {
+.ComposeJournal form #content{
     height: 300px;
+    width: 800px;
     font-size: 1.5rem;
+    
   }
 
+  .ComposeJournal form #title{
+    height: 60px;
+    width: 800px;
+    font-size: 1.5rem;
+    
+  }
+
+  .ComposeJournal form{
+    margin-top: 50px;
+    margin-left: 150px;
+    text-decoration-color: rgba(226, 219, 219, 0.76);
+  }
+
+.ComposeJournal {
+  background-image: url('../images/journal.jpg');
+  background-size: cover;
+  height: 800px;
+  text-decoration-color: rgba(226, 219, 219, 0.76);
+}
+
+.mb-3 {
+  background-color: rgba(83, 41, 41, 0.856);
+}
+
+.ComposeJournal .btn{
+  margin-left: 150px; 
+  position: center;
+  width: 500px;
+  color: rgba(255, 255, 255, 0.76);
+  background-color:rgba(247, 58, 33, 0.952);
+
+}

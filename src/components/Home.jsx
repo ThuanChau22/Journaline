@@ -44,52 +44,55 @@ export default function Homepage() {
 
   return (
     <div className="Homepage">
-      <Form inline>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="primary">Search</Button>
+      <Form inline >      
+        <FormControl className="searchBar" type="text" placeholder="Search" />
+        <Button className=" btn" variant="primary" size="lg">Search</Button>      
+        </Form>
+        <br></br>
         {/* username as actual username */}
-        <Button className="btnUser" variant="info" href="/yourJournal">{userName}</Button>
+        <Button className="btnUser1" variant="info" href="/yourJournal">{userName}</Button>
         {/* tempo sign out button to test sign out */}
-        <Button className="btnUser" variant="info" onClick={submit}>Sign Out</Button>
-      </Form>
+        <Button className="btnUser2" variant="info" onClick={submit}>Sign Out</Button>
+        
+   
       <br></br>
       <br></br>
       <CardColumns>
-        <Card>
+        <Card className="cl1"> 
           <Card.Body>
             <Card.Title>Person followed</Card.Title>
             <Card.Text>put some links inside get from DB</Card.Text>
             <Button className="testArea" variant="primary" href="/otherusertitlelist"
-              type="submit">Go to other user title list</Button>
+              >go to other user title list</Button>
           </Card.Body>
         </Card>
 
-        <Card>
+        <Card className="cl2">
           <Card.Body>
             <Card.Title>Newly published1</Card.Title>
             <Card.Text>put some newly published articles inside, get from DB</Card.Text>
           </Card.Body>
         </Card>
 
-        <Card>
+        <Card className="cl2">
           <Card.Body>
             <Card.Title>Newly published2</Card.Title>
             <Card.Text>put some newly published articles inside</Card.Text>
           </Card.Body>
         </Card>
 
-        <Card>
+        <Card className="cl2">
           <Card.Body>
             <Card.Title>Newly published3</Card.Title>
             <Card.Text>put some newly published articles inside</Card.Text>
           </Card.Body>
         </Card>
 
-        <Card>
+        <Card className="cl3">
           <Card.Body>
             <Card.Title>Newly published recommended journals</Card.Title>
             <Card.Text>put some newly published articles inside</Card.Text>
-            <Button className="textArea" variant="primary" href="/otheruserentry"
+            <Button className="testArea" variant="primary" size="sm" href="/otheruserentry"
               type="submit">Go to other user entry</Button>
           </Card.Body>
         </Card>
