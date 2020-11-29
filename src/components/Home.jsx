@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import Card from 'react-bootstrap/Card'
 import CardColumns from 'react-bootstrap/CardColumns'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 import { Auth } from 'aws-amplify';
 import {
@@ -44,26 +45,32 @@ export default function Homepage() {
 
   return (
     <div className="Homepage">
-      <Form inline >      
+      <Navbar collapseOnSelect expand="lg" variant="dark" >
+        <Navbar.Brand href="#Home.jsx">Journaline</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto"></Nav>
+          <Nav>
+            <Nav.Link href="/yourJournal">{userName}</Nav.Link>
+            <Nav.Link variant="info" onClick={submit}>Sign Out</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+      <br></br>
+      <br></br>
+      <Form inline >
         <FormControl className="searchBar" type="text" placeholder="Search" />
-        <Button className=" btn" variant="primary" size="lg">Search</Button>      
-        </Form>
-        <br></br>
-        {/* username as actual username */}
-        <Button className="btnUser1" variant="info" href="/yourJournal">{userName}</Button>
-        {/* tempo sign out button to test sign out */}
-        <Button className="btnUser2" variant="info" onClick={submit}>Sign Out</Button>
-        
-   
+        <Button className=" btn" variant="primary" size="lg">Search</Button>
+      </Form>
       <br></br>
       <br></br>
       <CardColumns>
-        <Card className="cl1"> 
+        <Card className="cl1">
           <Card.Body>
             <Card.Title>Person followed</Card.Title>
             <Card.Text>put some links inside get from DB</Card.Text>
             <Button className="testArea" variant="primary" href="/otherusertitlelist"
-              >go to other user title list</Button>
+            >go to other user title list</Button>
           </Card.Body>
         </Card>
 
