@@ -207,6 +207,7 @@ function ConfirmForm(props) {
             }).catch((error) => {
               // console.log(error);
             });
+            props.setIsSignedIn(true);
             history.push("/");
           }
         });
@@ -262,6 +263,7 @@ function SigninForm(props) {
       //Call Sign In
       signIn(userName, password).then((message) => {
         if (message === "") {
+          props.setIsSignedIn(true);
           history.push("/");
         } else if (message === "User is not confirmed.") {
           props.updateFormState("confirmSignUp");
@@ -288,7 +290,7 @@ function SigninForm(props) {
 
 
 //Controlling Form Transitions
-function FormControl() {
+function FormControl(props) {
   const [formState, updateFormState] = useState("signIn");
   const [userName, updateUserName] = useState("");
   const [password, updatePassword] = useState("");
@@ -325,15 +327,20 @@ function FormControl() {
       <div className="sliding-form">
         <div id="signin-form" style={signinTransition}>
           <SigninForm formState={formState} updateFormState={updateFormState}
-            updateUserName={updateUserName} />
+            updateUserName={updateUserName}
+            setIsSignedIn={props.setIsSignedIn} />
         </div>
         <div id="confirm-form" style={confirmTransition}>
-          <ConfirmForm formState={formState} updateFormState={updateFormState}
-            userName={userName} password={password} />
+          <ConfirmForm formState={formState}
+            updateFormState={updateFormState}
+            userName={userName} password={password}
+            setIsSignedIn={props.setIsSignedIn} />
         </div>
         <div id="signup-form" style={signupTransition}>
-          <SignupForm formState={formState} updateFormState={updateFormState}
-            updateUserName={updateUserName} updatePassword={updatePassword} />
+          <SignupForm formState={formState}
+            updateFormState={updateFormState}
+            updateUserName={updateUserName}
+            updatePassword={updatePassword} />
         </div>
       </div>
     </div>
@@ -342,9 +349,8 @@ function FormControl() {
 
 
 //Main Component
-function Signin() {
+function Signin(props) {
   const history = useHistory();
-
   useEffect(() => {
     //Check user sign in status
     checkUser().then((message) => {
@@ -360,7 +366,7 @@ function Signin() {
       <Row>
         <Col xl={4} lg={3} md={3} sm={2} xs={1} />
         <Col xl={4} lg={6} md={6} sm={8} xs={10}>
-          <FormControl />
+          <FormControl setIsSignedIn={props.setIsSignedIn} />
         </Col>
         <Col xl={4} lg={3} md={3} sm={2} xs={1} />
       </Row>
