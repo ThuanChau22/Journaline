@@ -102,7 +102,7 @@ function ListTitles(props) {
 
 
 function User() {
-  let { username } = useParams();
+  let { userName } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isOwner, setIsOwner] = useState(false);
 
@@ -113,7 +113,7 @@ function User() {
 
   async function authorizeUser() {
     const user = await Auth.currentAuthenticatedUser();
-    if (user.username === username) {
+    if (user.username === userName) {
       setIsOwner(true);
     } else {
       setIsOwner(false);
@@ -123,23 +123,22 @@ function User() {
 
   return (
     <div>
-      <h3>{username}</h3>
+      <h3>{userName}</h3>
       {!isLoading &&
         (!isOwner
           ?
           <div>
-            <FollowOptions userName={username}></FollowOptions>
+            <FollowOptions userName={userName}></FollowOptions>
             <label>Titles: </label>
-            <ListTitles userName={username} status="public" />
+            <ListTitles userName={userName} status="public" />
           </div>
           :
           <div>
-
             <label>Public</label>
-            <ListTitles userName={username} status="public" />
+            <ListTitles userName={userName} status="public" />
             <br />
             <label>Private</label>
-            <ListTitles userName={username} status="private" />
+            <ListTitles userName={userName} status="private" />
           </div>
         )
       }

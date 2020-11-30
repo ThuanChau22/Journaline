@@ -5,10 +5,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Signin from "./components/Signin";
-import User from "./components/User";
+import Profile from "./components/Profile";
 import Page from "./components/Page";
+import Compose from "./components/Compose";
 
-import ComposeJournal from "./components/ComposeJournal";
 import YourJournal from "./components/YourJournal";
 import YourTitleList from "./components/YourTitleList";
 import OtherUserEntry from "./components/OtherUserEntry";
@@ -28,13 +28,17 @@ function App() {
 
         <Route exact path="/" component={Home} />
 
-        <Route exact path="/:userName" component={User} />
+        <Route exact path="/:userName" component={Profile} />
 
-        <Route exact path="/:username/:pageId" component={Page} />
+        <Route exact path="/:userName/compose" component={Compose} />
+
+        <Route exact path="/:userName/:pageId" component={Page} />
+
+        {/* <Route path="/compose" component={Compose} /> */}
 
         <Route path="/yourJournal" component={YourJournal} />
         <Route path="/yourtitlelist" component={YourTitleList} />
-        <Route path="/composeJournal" component={ComposeJournal} />
+
         <Route path="/otherusertitlelist" component={OtherUserTitleList} />
         <Route path="/otheruserentry" component={OtherUserEntry} />
         <Route component={NotFound} />
