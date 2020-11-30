@@ -1,0 +1,37 @@
+type User
+@model
+@auth(rules: [{ allow: owner, operations: [create, update, delete] }])
+@key(fields: ["username"])
+{
+  id:ID!
+  username: String!
+  follow: [Follow] @connection(keyName: "byFollower", fields:["username"])
+  page: [Page] @connection(keyName: "byUserName", fields:["username"])
+}
+
+type Follow
+@model
+@auth(rules: [{ allow: owner, operations: [create, update, delete] }])
+@key(name: "byFollower", fields: ["follower", "followedUser"])
+{
+  id:ID!
+  follower: String!
+  followedUser: String!
+  user: User @connection(fields: ["followedUser"])
+}
+
+type Page
+@model
+@auth(rules: [{ allow: owner, operations: [create, update, delete] }])
+@key(fields: ["id"])
+@key(name: "byUserName", fields: ["username", "status", "createdAt"], queryField: "pagesByUserName")
+@key(name: "byStatus", fields: ["status", "createdAt"], queryField: "pagesByStatus")
+{
+  id: ID!
+  title: String!
+  status: String!
+  content: String!
+  username: String!
+  user: User @connection(fields: ["username"])
+  createdAt: AWSDateTime!
+}

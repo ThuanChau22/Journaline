@@ -16,6 +16,13 @@ import {
   signIn,
   checkUser
 } from "../js/authentication";
+import {
+  API,
+  graphqlOperation
+} from 'aws-amplify';
+import {
+  createUser
+} from "../graphql/mutations"
 
 function InputUserName(props) {
   return (
@@ -183,12 +190,23 @@ function ConfirmForm(props) {
 
   function submit(e) {
     e.preventDefault();
-    //Call Confirm Sign Up
+    const userName = props.userName;
+    const password = props.password;
+    //Confirm Sign Up
     confirmSignUp(props.userName, authCode).then((message) => {
       updateErrorMessage(message);
       if (message === "") {
-        signIn(props.userName, props.password).then((message) => {
+        //Sign In
+        signIn(userName, password).then((message) => {
           if (message === "") {
+            //Add user to database
+            API.graphql(graphqlOperation(createUser, {
+              input: { username: userName }
+            })).then((success) => {
+              // console.log(success);
+            }).catch((error) => {
+              // console.log(error);
+            });
             history.push("/");
           }
         });
@@ -238,7 +256,9 @@ function SigninForm(props) {
   function submit(e) {
     e.preventDefault();
     updateErrorMessage("");
-    if (userName !== "" && password !== "") {
+    if (userName === "") {
+      updateErrorMessage("Username cannot be empty.");
+    } else {
       //Call Sign In
       signIn(userName, password).then((message) => {
         if (message === "") {
@@ -250,7 +270,7 @@ function SigninForm(props) {
             updateErrorMessage(message);
           });
         } else {
-          updateErrorMessage(message);
+          updateErrorMessage("Incorrect username or password.");
         }
       });
     }
@@ -325,11 +345,13 @@ function FormControl() {
 function Signin() {
   const history = useHistory();
 
-  //Check user sign in status
-  checkUser().then((message) => {
-    if (message === "") {
-      history.push("/");
-    }
+  useEffect(() => {
+    //Check user sign in status
+    checkUser().then((message) => {
+      if (message === "") {
+        history.push("/");
+      }
+    });
   });
 
   return (
