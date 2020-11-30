@@ -7,7 +7,7 @@ import {
 } from "../graphql/queries"
 
 function Page() {
-  let { pageid } = useParams();
+  let { pageId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [pageData, setPageData] = useState(null);
 
@@ -18,7 +18,7 @@ function Page() {
 
   async function fetchPage() {
     try {
-      const result = await API.graphql(graphqlOperation(getPage, { id: pageid }));
+      const result = await API.graphql(graphqlOperation(getPage, { id: pageId }));
       setPageData(result.data.getPage);
       setIsLoading(false);
     } catch (error) {

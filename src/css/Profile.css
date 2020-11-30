@@ -1,0 +1,24 @@
+.profileBody{
+    padding: 60px 0px 0px 0px;
+    height: 100%;
+}
+
+.profileBody .composeLink:link {
+    color: rgba(255, 255, 255, 0.76);
+    text-decoration: none;
+}
+
+.profileBody .composeLink:visited{
+    color: rgba(255, 255, 255, 0.76);
+    text-decoration: none;
+}
+
+.profileBody .composeLink:hover{
+    color: rgba(255, 255, 255, 0.76);
+    text-decoration: none;
+}
+
+.profileBody .composeLink:active{
+    color: rgba(255, 255, 255, 0.76);
+    text-decoration: none;
+}

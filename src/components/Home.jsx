@@ -1,24 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Auth, API, graphqlOperation } from 'aws-amplify';
-
-import "../css/Homepage.css";
+import "../css/Home.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import Card from 'react-bootstrap/Card'
 import CardColumns from 'react-bootstrap/CardColumns'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-
-import {
-  checkUser,
-  signOut
-} from "../js/authentication";
+import { Auth, API, graphqlOperation } from 'aws-amplify';
 import {
   getUser,
   pagesByStatus
 } from "../graphql/queries"
+
 
 function ListFollowedUsers(props) {
   const [isLoading, setIsLoading] = useState(true);
@@ -84,89 +78,13 @@ function ListRecentTitles() {
 }
 
 function Home() {
-  const history = useHistory();
-  const [isLoading, setIsLoading] = useState(true);
-  const [username, updateUserName] = useState("");
-
-  useEffect(() => {
-    fetchUser();
-  });
-
-  async function fetchUser() {
-    console.log(window.location.href.includes("/signin"));
-    //Check user sign in status
-    const message = await checkUser();
-    if (message === "") {
-      //Get username
-      const user = await Auth.currentAuthenticatedUser();
-      updateUserName(user.username);
-      setIsLoading(false);
-    } else {
-      history.push("/signin");
-    }
-  }
-
-  async function submit(e) {
-    e.preventDefault();
-    //Call Sign Out
-    const message = await signOut();
-    if (message === "") {
-      history.push("/signin");
-    }
-  }
-
   return (
-
-    // <div>
-    //   {!isLoading &&
-    //     <div>
-    //       <h3>Welcome,
-    //         <Link to={username} >{username}</Link>
-    //       </h3>
-    //       <form method="post" onSubmit={submit}>
-    //         <input type="submit" name="userName" value="Sign Out" />
-    //       </form>
-    //       <br />
-    //       <label>Followed users: </label>
-    //       <ListFollowedUsers userName={username} />
-    //       <br />
-    //       <label>Most Recent Titles: </label>
-    //       <ListRecentTitles />
-    //     </div>
-    //   }
-
-    <div className="Homepage">
-      
-<!--       <Form inline>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="primary">Search</Button>
-        {/* username as actual username */}
-        <Button className="btnUser" variant="info" href="/yourJournal">{
-          // userName
-        }</Button>
-        {/* tempo sign out button to test sign out */}
-        <Button className="btnUser" variant="info" onClick={submit}>Sign Out</Button> -->
-
-      <Navbar collapseOnSelect expand="lg" variant="dark" >
-        <Navbar.Brand href="#Home.jsx">Journaline</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto"></Nav>
-          <Nav>
-            <Nav.Link href="/yourJournal">{userName}</Nav.Link>
-            <Nav.Link variant="info" onClick={submit}>Sign Out</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-      <br></br>
-      <br></br>
-      <Form inline >
-        <FormControl className="searchBar" type="text" placeholder="Search" />
-        <Button className=" btn" variant="primary" size="lg">Search</Button>
+    <div className="homebody">
+      <Form className="searchForm">
+        <FormControl className="searchBar" type="text" placeholder="Search..." />
+        {/* <Button className=" seachButton" variant="primary" size="lg">Search</Button> */}
       </Form>
-        
-      <br></br>
-      <br></br>
+      <hr />
       <CardColumns>
         <Card className="cl1">
           <Card.Body>

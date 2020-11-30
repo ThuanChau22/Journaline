@@ -1,50 +1,48 @@
-.Homepage{
-    padding: 60px 0;
+.homebody{
     background-image: url('../images/journal.jpg');
     background-size: cover;
-    height: 900px;
+    padding: 57px 0px 0px 0px;
+    height: 100%;
 }
 
-.navbar{
-    background-color:  rgba(247, 58, 33, 0.952);
+.homebody .searchBar{
+    position: fixed;
+    width: 100%;
+    border: 1px solid rgba(247, 58, 33, 0.952);
+    outline: none;
 }
 
-.Homepage .btn{
+.homebody .btn{
     color: rgba(255, 255, 255, 0.76);
     background-color: rgba(247, 58, 33, 0.952);
     height: 50px;
     margin-left: 10px;
 }
 
-.Homepage .searchBar{  
-    
-    margin-left: 40%;
-}
-
-.Homepage .btnUser1{
+.homebody .btnUser1{
     border-radius: 35px; 
     width: 200px;
     
     
 }
-.Homepage .btnUser2{
+.homebody .btnUser2{
     border-radius: 45px; 
     width: 200px;
     
 }
 
-.Homepage .testArea{
+.homebody .testArea{
     width: 300px;
 }
 
-.Homepage .cl1{
+.homebody .cl1{
     height: 500px;
 }
 
-.Homepage .cl2{
+.homebody .cl2{
     height: 200px;
 }
 
-.Homepage .cl3{
+.homebody .cl3{
     height: 500px;
 }
