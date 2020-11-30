@@ -1,0 +1,17 @@
+
+.OtherUserEntry{
+    padding: 60px 0;
+    background-image: url('../images/journal.jpg');
+    background-size: cover;
+    height: auto;
+}
+
+.btnFollow{
+    margin-left: 30px;
+    margin-right:10px;
+}
+
+.btnUnfollow{
+    margin-left: 30px;
+    margin-right:10px;
+}

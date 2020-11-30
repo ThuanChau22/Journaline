@@ -2,6 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Auth, API, graphqlOperation } from 'aws-amplify';
+        
+import "../css/Homepage.css";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import FormControl from "react-bootstrap/FormControl";
+import Card from 'react-bootstrap/Card'
+import CardColumns from 'react-bootstrap/CardColumns'
+
 import {
   checkUser,
   signOut
@@ -74,7 +82,7 @@ function ListRecentTitles() {
   );
 }
 
-function Home() {
+function Home() {      
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
   const [username, updateUserName] = useState("");
@@ -106,7 +114,8 @@ function Home() {
   }
 
   return (
-    <div>
+    
+<!--     <div>
       {!isLoading &&
         <div>
           <h3>Welcome,
@@ -122,9 +131,62 @@ function Home() {
           <label>Most Recent Titles: </label>
           <ListRecentTitles />
         </div>
-      }
+      } -->
+    
+    <div className="Homepage">
+      <Form inline>
+        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        <Button variant="primary">Search</Button>
+        {/* username as actual username */}
+        <Button className="btnUser" variant="info" href="/yourJournal">{userName}</Button>
+        {/* tempo sign out button to test sign out */}
+        <Button className="btnUser" variant="info" onClick={submit}>Sign Out</Button>
+      </Form>
+      <br></br>
+      <br></br>
+      <CardColumns>
+        <Card>
+          <Card.Body>
+            <Card.Title>Person followed</Card.Title>
+            <Card.Text>put some links inside get from DB</Card.Text>
+            <Button className="testArea" variant="primary" href="/otherusertitlelist"
+              type="submit">Go to other user title list</Button>
+          </Card.Body>
+        </Card>
+
+        <Card>
+          <Card.Body>
+            <Card.Title>Newly published1</Card.Title>
+            <Card.Text>put some newly published articles inside, get from DB</Card.Text>
+          </Card.Body>
+        </Card>
+
+        <Card>
+          <Card.Body>
+            <Card.Title>Newly published2</Card.Title>
+            <Card.Text>put some newly published articles inside</Card.Text>
+          </Card.Body>
+        </Card>
+
+        <Card>
+          <Card.Body>
+            <Card.Title>Newly published3</Card.Title>
+            <Card.Text>put some newly published articles inside</Card.Text>
+          </Card.Body>
+        </Card>
+
+        <Card>
+          <Card.Body>
+            <Card.Title>Newly published recommended journals</Card.Title>
+            <Card.Text>put some newly published articles inside</Card.Text>
+            <Button className="textArea" variant="primary" href="/otheruserentry"
+              type="submit">Go to other user entry</Button>
+          </Card.Body>
+        </Card>
+
+      </CardColumns>
     </div>
   );
 }
-
+        
 export default Home;
