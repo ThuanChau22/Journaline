@@ -2,12 +2,46 @@
     padding: 60px 0;
     background-image: url('../images/journal.jpg');
     background-size: cover;
-    height: 100vh;
+    height: 900px;
 }
 
-
-.Homepage .btnUser{
-    border-radius: 35px;
+.Homepage .btn{
+    color: rgba(255, 255, 255, 0.76);
+    background-color: rgba(247, 58, 33, 0.952);
+    height: 50px;
     margin-left: 10px;
+}
+
+.Homepage .searchBar{  
+    margin-left: 500px;
+}
+
+.Homepage .btnUser1{
+    border-radius: 35px; 
+    margin-left: 400px;
+    width: 200px;
     
+    
+}
+.Homepage .btnUser2{
+    border-radius: 45px; 
+    margin-left: 100px;
+    width: 200px;
+    
+}
+
+.Homepage .testArea{
+    width: 300px;
+}
+
+.Homepage .cl1{
+    height: 500px;
+}
+
+.Homepage .cl2{
+    height: 200px;
+}
+
+.Homepage .cl3{
+    height: 500px;
 }

@@ -10,7 +10,7 @@ export default function YourTitleList() {
     return(
 
         <div className="yourtilelist">
-            <Button variant="info" href="/composeJournal">Compose</Button>
+            <Button className="btn1"  variant="info" href="/composeJournal">Compose</Button>
 
             <Card className ="list-body">
                 <Card.Body>
