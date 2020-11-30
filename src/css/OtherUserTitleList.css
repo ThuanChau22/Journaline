@@ -1,14 +1,14 @@
-.yourtilelist{
+.otherusertitlelist{
     padding: 60px 0;
     background-image: url('../images/journal.jpg');
     background-size: cover;
     height: 800px;
 }
 
-.yourtilelist .btn1{
+.otherusertitlelist .testArea{
     margin-left: 300px;
     color: rgba(255, 255, 255, 0.76);
-    background-color: rgba(83, 41, 41, 0.856);
+    background-color:rgba(247, 58, 33, 0.952);
 }
 
 .list-body{

@@ -6,12 +6,16 @@
     height: auto;
 }
 
-.btnFollow{
-    margin-left: 30px;
+.OtherUserEntry .btnFollow{
+    margin-left: 450px;
     margin-right:10px;
+    color: rgba(255, 255, 255, 0.76);
+    background-color:rgba(247, 58, 33, 0.952);
 }
 
-.btnUnfollow{
+.OtherUserEntry .btnUnfollow{
     margin-left: 30px;
     margin-right:10px;
+    color: rgba(255, 255, 255, 0.76);
+    background-color:rgba(247, 58, 33, 0.952);
 }
