@@ -5,6 +5,10 @@
     height: 900px;
 }
 
+.navbar{
+    background-color:  rgba(247, 58, 33, 0.952);
+}
+
 .Homepage .btn{
     color: rgba(255, 255, 255, 0.76);
     background-color: rgba(247, 58, 33, 0.952);
@@ -13,19 +17,18 @@
 }
 
 .Homepage .searchBar{  
-    margin-left: 500px;
+    
+    margin-left: 40%;
 }
 
 .Homepage .btnUser1{
     border-radius: 35px; 
-    margin-left: 400px;
     width: 200px;
     
     
 }
 .Homepage .btnUser2{
     border-radius: 45px; 
-    margin-left: 100px;
     width: 200px;
     
 }
