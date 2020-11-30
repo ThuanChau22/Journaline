@@ -1,8 +1,10 @@
 import React from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Home from "./components/Home"
-import Signin from "./components/Signin"
+import Header from "./components/Header";
+import Home from "./components/Home";
+import Signin from "./components/Signin";
 import User from "./components/User";
 import Page from "./components/Page";
 
@@ -15,13 +17,20 @@ import NotFound from "./components/NotFound";
 
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
   return (
     <Router>
+      <Header isSignedIn={isSignedIn}
+        setIsSignedIn={setIsSignedIn} />
       <Switch>
+        <Route exact path="/signin"
+          render={() => <Signin setIsSignedIn={setIsSignedIn} />} />
+
         <Route exact path="/" component={Home} />
-        <Route exact path="/signin" component={Signin} />
-        <Route exact path="/:username" component={User} />
-        <Route exact path="/:username/:pageid" component={Page} />
+
+        <Route exact path="/:userName" component={User} />
+
+        <Route exact path="/:username/:pageId" component={Page} />
 
         <Route path="/yourJournal" component={YourJournal} />
         <Route path="/yourtitlelist" component={YourTitleList} />

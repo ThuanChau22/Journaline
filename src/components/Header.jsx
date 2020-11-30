@@ -23,6 +23,7 @@ function Header(props) {
     //Check user sign in status
     const message = await checkUser();
     if (message === "") {
+      props.setIsSignedIn(true);
       //Get username
       const user = await Auth.currentAuthenticatedUser();
       updateUserName(user.username);
@@ -44,23 +45,25 @@ function Header(props) {
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" variant="dark" >
-      <LinkContainer to="/">
-        <Navbar.Brand >Journaline</Navbar.Brand>
-      </LinkContainer>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto"></Nav>
-        {props.isSignedIn &&
-          <Nav>
-            <LinkContainer to={userName}>
-              <Nav.Link variant="info">{userName}</Nav.Link>
-            </LinkContainer>
-            <Nav.Link variant="info" onClick={submit}>Sign Out</Nav.Link>
-          </Nav>
-        }
-      </Navbar.Collapse>
-    </Navbar>
+    <div className="header">
+      <Navbar collapseOnSelect expand="lg" variant="dark" >
+        <LinkContainer to="/">
+          <Navbar.Brand >Journaline</Navbar.Brand>
+        </LinkContainer>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto"></Nav>
+          {props.isSignedIn &&
+            <Nav>
+              <LinkContainer to={userName}>
+                <Nav.Link variant="info">{userName}</Nav.Link>
+              </LinkContainer>
+              <Nav.Link variant="info" onClick={submit}>Sign Out</Nav.Link>
+            </Nav>
+          }
+        </Navbar.Collapse>
+      </Navbar>
+    </div>
   );
 }
 
