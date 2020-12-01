@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "../css/Compose.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -10,6 +11,7 @@ import {
 
 
 function Compose() {
+  const history = useHistory();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -30,6 +32,7 @@ function Compose() {
           content: target.content.value
         }
       }));
+      history.push("/" + user.username);
     } catch (error) {
       console.log("error: ", error)
     }
@@ -42,7 +45,7 @@ function Compose() {
           <Form.Control
             name="title"
             value={title}
-            as="textarea"
+            as="input"
             onChange={(e) => setTitle(e.target.value)}
             placeholder="title"
           />
@@ -66,7 +69,7 @@ function Compose() {
           <option value="private">Private</option>
         </Form.Control>
         <hr />
-        <Button className="btn" size="lg" type="submit" disabled={!validateForm()}>
+        <Button size="lg" type="submit" disabled={!validateForm()}>
           Publish
         </Button>
       </Form>

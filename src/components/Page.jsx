@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import "../css/Page.css";
 import { API, graphqlOperation } from 'aws-amplify';
 import {
   getPage
@@ -27,9 +28,10 @@ function Page() {
   }
 
   return (
-    <div>
+    <div className="pageBody">
       {!isLoading &&
         <div>
+          <Link to={"/" + pageData.username} >{pageData.username}</Link>
           <p>Title: {pageData.title}</p>
           <p>Status: {pageData.status}</p>
           <p>Content: {pageData.content}</p>

@@ -1,5 +1,5 @@
 .profileBody{
-    padding: 60px 0px 0px 0px;
+    padding: 56px 2% 0px 2%;
     height: 100%;
 }
 
@@ -21,4 +21,49 @@
 .profileBody .composeLink:active{
     color: rgba(255, 255, 255, 0.76);
     text-decoration: none;
+}
+
+.profileBody .btn{
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    position: center;
+    width: 40%;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.76);
+    background-color:rgba(177, 21, 0, 0.884);
+    border: 2px solid rgba(255, 255, 255, 0.76);
+    border-radius: 10px;
+    outline: none;
+}
+
+.profileBody .btn:hover{
+    border: 2px solid rgba(177, 21, 0, 0.884);
+}
+
+.profileBody .btn:active{
+    color: black;
+    background: rgba(255, 255, 255, 0.76);
+}
+
+.profileBody .followButton{
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    width: 10%;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.76);
+    background-color:rgba(177, 21, 0, 0.884);
+    border: 2px solid rgba(255, 255, 255, 0.76);
+    border-radius: 10px;
+    outline: none;
+}
+
+.profileBody .followButton:hover{
+    border: 2px solid rgba(177, 21, 0, 0.884);
+}
+
+.profileBody .followButton:active{
+    color: black;
+    background: rgba(255, 255, 255, 0.76);
 }

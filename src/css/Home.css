@@ -1,29 +1,35 @@
 .homebody{
     background-image: url('../images/journal.jpg');
     background-size: cover;
-    padding: 57px 0px 0px 0px;
+    padding: 55px 0px 0px 0px;
     height: 100%;
 }
 
-.homebody .searchBar{
+.homebody .searchForm{
+    display: inline-flex;
     position: fixed;
     width: 100%;
-    border: 1px solid rgba(247, 58, 33, 0.952);
-    outline: none;
+    z-index: 999;
+    margin-bottom: 20px;
+}
+
+.homebody .searchBar{
+    width: 100%;
+    border: 1px solid rgba(177, 21, 0, 0.884);
+    border-right: 0px;
+    border-left: 0px;
 }
 
 .homebody .btn{
     color: rgba(255, 255, 255, 0.76);
-    background-color: rgba(247, 58, 33, 0.952);
-    height: 50px;
-    margin-left: 10px;
+    background-color: rgba(177, 21, 0, 0.884);
+    height: 38px;
+    border: 0px;
 }
 
 .homebody .btnUser1{
     border-radius: 35px; 
     width: 200px;
-    
-    
 }
 .homebody .btnUser2{
     border-radius: 45px; 

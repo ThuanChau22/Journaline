@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../css/Home.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -34,10 +34,10 @@ function ListFollowedUsers(props) {
   return (
     <div>
       {!isLoading &&
-        followedUsers.map((e) => {
+        followedUsers.map((item) => {
           return (
-            <div key={e.user.id} id={e.user.username}>
-              <Link to={e.user.username} >{e.user.username}</Link>
+            <div key={item.id} id={item.followedUser}>
+              <Link to={item.followedUser} >{item.followedUser}</Link>
             </div>
           );
         })}
@@ -69,7 +69,7 @@ function ListRecentTitles() {
         titles.map((page) => {
           return (
             <div key={page.id} id={page.id}>
-              <Link to={page.username + "/" + page.id}>{page.title}</Link>
+              <Link to={"/" + page.username + "/" + page.id}>{page.title}</Link>
             </div>
           );
         })}
@@ -78,54 +78,63 @@ function ListRecentTitles() {
 }
 
 function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    getUserName();
+    // eslint-disable-next-line
+  }, []);
+
+  async function getUserName() {
+    const user = await Auth.currentAuthenticatedUser();
+    setUserName(user.username);
+    setIsLoading(false);
+  }
+
   return (
-    <div className="homebody">
-      <Form className="searchForm">
-        <FormControl className="searchBar" type="text" placeholder="Search..." />
-        {/* <Button className=" seachButton" variant="primary" size="lg">Search</Button> */}
-      </Form>
-      <hr />
-      <CardColumns>
-        <Card className="cl1">
-          <Card.Body>
-            <Card.Title>Person followed</Card.Title>
-            <Card.Text>put some links inside get from DB</Card.Text>
-            <Button className="testArea" variant="primary" href="/otherusertitlelist"
-            >go to other user title list</Button>
-          </Card.Body>
-        </Card>
-
-        <Card className="cl2">
-          <Card.Body>
-            <Card.Title>Newly published1</Card.Title>
-            <Card.Text>put some newly published articles inside, get from DB</Card.Text>
-          </Card.Body>
-        </Card>
-
-        <Card className="cl2">
-          <Card.Body>
-            <Card.Title>Newly published2</Card.Title>
-            <Card.Text>put some newly published articles inside</Card.Text>
-          </Card.Body>
-        </Card>
-
-        <Card className="cl2">
-          <Card.Body>
-            <Card.Title>Newly published3</Card.Title>
-            <Card.Text>put some newly published articles inside</Card.Text>
-          </Card.Body>
-        </Card>
-
-        <Card className="cl3">
-          <Card.Body>
-            <Card.Title>Newly published recommended journals</Card.Title>
-            <Card.Text>put some newly published articles inside</Card.Text>
-            <Button className="testArea" variant="primary" size="sm" href="/otheruserentry"
-              type="submit">Go to other user entry</Button>
-          </Card.Body>
-        </Card>
-
-      </CardColumns>
+    <div>
+      {!isLoading &&
+        <div className="homebody">
+          <Form className="searchForm">
+            <FormControl className="searchBar" type="text" placeholder="Search..." />
+            <Button className=" seachButton" variant="primary" size="sm">Search</Button>
+          </Form>
+          <hr /><hr />
+          <CardColumns>
+            <Card className="cl1">
+              <Card.Body>
+                <Card.Title>Followed Users</Card.Title>
+                <ListFollowedUsers userName={userName} />
+              </Card.Body>
+            </Card>
+            <Card className="cl2">
+              <Card.Body>
+                <Card.Title>Newly published1</Card.Title>
+                <Card.Text>put some newly published articles inside, get from DB</Card.Text>
+              </Card.Body>
+            </Card>
+            <Card className="cl2">
+              <Card.Body>
+                <Card.Title>Newly published2</Card.Title>
+                <Card.Text>put some newly published articles inside</Card.Text>
+              </Card.Body>
+            </Card>
+            <Card className="cl2">
+              <Card.Body>
+                <Card.Title>Newly published3</Card.Title>
+                <Card.Text>put some newly published articles inside</Card.Text>
+              </Card.Body>
+            </Card>
+            <Card className="cl3">
+              <Card.Body>
+                <Card.Title>Newly published journals</Card.Title>
+                <ListRecentTitles />
+              </Card.Body>
+            </Card>
+          </CardColumns>
+        </div>
+      }
     </div>
   );
 }
