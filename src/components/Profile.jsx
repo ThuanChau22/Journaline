@@ -16,6 +16,7 @@ import {
 function GuessComponents(props) {
   return (
     <div className="profileBody">
+      <h3>{props.userName}</h3>
       <FollowOptions userName={props.userName} />
       <label>Titles</label>
       <ListTitles userName={props.userName} status="public" />
