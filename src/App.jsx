@@ -34,8 +34,6 @@ function App() {
 
         <Route exact path="/:userName/:pageId" component={Page} />
 
-        {/* <Route path="/compose" component={Compose} /> */}
-
         <Route path="/yourJournal" component={YourJournal} />
         <Route path="/yourtitlelist" component={YourTitleList} />
 

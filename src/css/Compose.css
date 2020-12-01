@@ -1,13 +1,49 @@
 .composeBody{
-  padding: 60px 0px 0px 0px;
+  padding: 80px 0px 0px 0px;
+  height: 100%;
 }
 
-.ComposeJournal form #content{
+.composeBody .btn{
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    width: 20%;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.76);
+    background-color:rgba(177, 21, 0, 0.884);
+    border: 2px solid rgba(255, 255, 255, 0.76);
+    border-radius: 10px;
+    outline: none;
+}
+
+.composeBody .btn:hover{
+    border: 2px solid rgba(177, 21, 0, 0.884);
+}
+
+.composeBody .btn:active{
+    color: black;
+    background: rgba(255, 255, 255, 0.76);
+}
+
+.composeBody .btn:disabled {
+    color: rgba(255, 255, 255, 0.76);
+    background-color: rgba(177, 21, 0, 0.884);
+    border-color: rgba(255, 255, 255, 0.76);
+}
+
+.composeBody .primary:not(.disabled).active {
+    color: rgba(255, 255, 255, 0.76);
+    background-color: rgba(177, 21, 0, 0.884);
+    border-color: rgba(255, 255, 255, 0.76);
+}
+
+/* .ComposeJournal form #content{
     height: 300px;
     width: 800px;
     font-size: 1.5rem;
+    
   }
-/* 
+
   .ComposeJournal form #title{
     height: 60px;
     width: 800px;
@@ -31,11 +67,4 @@
 .mb-3 {
   background-color: rgba(83, 41, 41, 0.856);
 }
-
-.ComposeJournal .btn{
-  margin-left: 150px; 
-  position: center;
-  width: 500px;
-  color: rgba(255, 255, 255, 0.76);
-  background-color:rgba(247, 58, 33, 0.952);
-} */
+*/

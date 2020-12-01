@@ -55,7 +55,7 @@ function Header(props) {
           <Nav className="mr-auto"></Nav>
           {props.isSignedIn &&
             <Nav>
-              <LinkContainer to={userName}>
+              <LinkContainer to={"/" + userName}>
                 <Nav.Link variant="info">{userName}</Nav.Link>
               </LinkContainer>
               <Nav.Link variant="info" onClick={submit}>Sign Out</Nav.Link>
