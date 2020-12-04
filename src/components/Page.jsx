@@ -28,7 +28,7 @@ function Page() {
   }
 
   return (
-    <div className="pageBody">
+    <div className="page-body">
       {!isLoading &&
         <div>
           <Link to={"/" + pageData.username} >{pageData.username}</Link>

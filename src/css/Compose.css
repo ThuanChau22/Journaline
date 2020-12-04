@@ -1,9 +1,9 @@
-.composeBody{
+.compose-body{
   padding: 80px 0px 0px 0px;
   height: 100%;
 }
 
-.composeBody .btn{
+.compose-body .btn{
     margin: auto;
     margin-top: 1%;
     margin-bottom: 2%;
@@ -16,22 +16,22 @@
     outline: none;
 }
 
-.composeBody .btn:hover{
+.compose-body .btn:hover{
     border: 2px solid rgba(177, 21, 0, 0.884);
 }
 
-.composeBody .btn:active{
+.compose-body .btn:active{
     color: black;
     background: rgba(255, 255, 255, 0.76);
 }
 
-.composeBody .btn:disabled {
+.compose-body .btn:disabled {
     color: rgba(255, 255, 255, 0.76);
     background-color: rgba(177, 21, 0, 0.884);
     border-color: rgba(255, 255, 255, 0.76);
 }
 
-.composeBody .primary:not(.disabled).active {
+.compose-body .primary:not(.disabled).active {
     color: rgba(255, 255, 255, 0.76);
     background-color: rgba(177, 21, 0, 0.884);
     border-color: rgba(255, 255, 255, 0.76);

@@ -15,7 +15,7 @@ import {
 
 function GuessComponents(props) {
   return (
-    <div className="profileBody">
+    <div>
       <h3>{props.userName}</h3>
       <FollowOptions userName={props.userName} />
       <label>Titles</label>
@@ -75,7 +75,7 @@ function FollowOptions(props) {
 
 function OwnerComponents(props) {
   return (
-    <div className="profileBody">
+    <div>
       <Link className="composeLink" to={props.userName + "/compose"}>
         <Button variant="" size="lg" type="submit" block>
           Compose</Button>
@@ -145,7 +145,7 @@ function Profile() {
   }
 
   return (
-    <div>
+    <div className="profile-body">
       {!isLoading &&
         (!isOwner
           ? <GuessComponents userName={userName} />

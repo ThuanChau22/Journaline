@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/Home.css";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
 import Card from 'react-bootstrap/Card'
 import CardColumns from 'react-bootstrap/CardColumns'
 import { Auth, API, graphqlOperation } from 'aws-amplify';
@@ -95,7 +95,7 @@ function Home() {
   return (
     <div>
       {!isLoading &&
-        <div className="homebody">
+        <div className="home-body">
           <Form className="searchForm">
             <FormControl className="searchBar" type="text" placeholder="Search..." />
             <Button className=" seachButton" variant="primary" size="sm">Search</Button>

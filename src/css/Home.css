@@ -1,54 +1,54 @@
-.homebody{
+.home-body{
     background-image: url('../images/journal.jpg');
     background-size: cover;
     padding: 55px 0px 0px 0px;
     height: 100%;
 }
 
-.homebody .searchForm{
+.home-body .searchForm{
     display: inline-flex;
     position: fixed;
     width: 100%;
-    z-index: 999;
+    z-index: 99;
     margin-bottom: 20px;
 }
 
-.homebody .searchBar{
+.home-body .searchBar{
     width: 100%;
     border: 1px solid rgba(177, 21, 0, 0.884);
     border-right: 0px;
     border-left: 0px;
 }
 
-.homebody .btn{
+.home-body .btn{
     color: rgba(255, 255, 255, 0.76);
     background-color: rgba(177, 21, 0, 0.884);
     height: 38px;
     border: 0px;
 }
 
-.homebody .btnUser1{
+.home-body .btnUser1{
     border-radius: 35px; 
     width: 200px;
 }
-.homebody .btnUser2{
+.home-body .btnUser2{
     border-radius: 45px; 
     width: 200px;
     
 }
 
-.homebody .testArea{
+.home-body .testArea{
     width: 300px;
 }
 
-.homebody .cl1{
+.home-body .cl1{
     height: 500px;
 }
 
-.homebody .cl2{
+.home-body .cl2{
     height: 200px;
 }
 
-.homebody .cl3{
+.home-body .cl3{
     height: 500px;
 }
