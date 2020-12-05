@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../css/Home.css";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
@@ -12,6 +12,9 @@ import {
   getUser,
   pagesByStatus
 } from "../graphql/queries"
+import {
+  checkUser
+} from "../js/authentication";
 
 
 function ListFollowedUsers(props) {
@@ -78,10 +81,18 @@ function ListRecentTitles() {
 }
 
 function Home() {
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
+    console.log("here");
+    //Check user sign in status
+    checkUser().then((message) => {
+      if (message !== "") {
+        history.push("/signin");
+      }
+    });
     getUserName();
     // eslint-disable-next-line
   }, []);
