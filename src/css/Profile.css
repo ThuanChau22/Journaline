@@ -1,29 +1,29 @@
-.profileBody{
+.profile-body{
     padding: 56px 2% 0px 2%;
     height: 100%;
 }
 
-.profileBody .composeLink:link {
+.profile-body .composeLink:link {
     color: rgba(255, 255, 255, 0.76);
     text-decoration: none;
 }
 
-.profileBody .composeLink:visited{
+.profile-body .composeLink:visited{
     color: rgba(255, 255, 255, 0.76);
     text-decoration: none;
 }
 
-.profileBody .composeLink:hover{
+.profile-body .composeLink:hover{
     color: rgba(255, 255, 255, 0.76);
     text-decoration: none;
 }
 
-.profileBody .composeLink:active{
+.profile-body .composeLink:active{
     color: rgba(255, 255, 255, 0.76);
     text-decoration: none;
 }
 
-.profileBody .btn{
+.profile-body .btn{
     margin: auto;
     margin-top: 1%;
     margin-bottom: 2%;
@@ -37,16 +37,16 @@
     outline: none;
 }
 
-.profileBody .btn:hover{
+.profile-body .btn:hover{
     border: 2px solid rgba(177, 21, 0, 0.884);
 }
 
-.profileBody .btn:active{
+.profile-body .btn:active{
     color: black;
     background: rgba(255, 255, 255, 0.76);
 }
 
-.profileBody .followButton{
+.profile-body .followButton{
     margin: auto;
     margin-top: 1%;
     margin-bottom: 2%;
@@ -59,11 +59,11 @@
     outline: none;
 }
 
-.profileBody .followButton:hover{
+.profile-body .followButton:hover{
     border: 2px solid rgba(177, 21, 0, 0.884);
 }
 
-.profileBody .followButton:active{
+.profile-body .followButton:active{
     color: black;
     background: rgba(255, 255, 255, 0.76);
 }

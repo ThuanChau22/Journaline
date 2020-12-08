@@ -361,7 +361,7 @@ function Signin(props) {
   });
 
   return (
-    <Container fluid className="signin-page">
+    <Container fluid className="signin-body">
       <p className="greeting">Welcome to Journaline</p>
       <Row>
         <Col xl={4} lg={3} md={3} sm={2} xs={1} />

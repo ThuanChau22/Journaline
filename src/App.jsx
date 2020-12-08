@@ -8,11 +8,6 @@ import Signin from "./components/Signin";
 import Profile from "./components/Profile";
 import Page from "./components/Page";
 import Compose from "./components/Compose";
-
-// import YourJournal from "./components/YourJournal";
-// import YourTitleList from "./components/YourTitleList";
-// import OtherUserEntry from "./components/OtherUserEntry";
-// import OtherUserTitleList from "./components/OtherUserTitleList";
 import NotFound from "./components/NotFound";
 
 
@@ -25,20 +20,10 @@ function App() {
       <Switch>
         <Route exact path="/signin"
           render={() => <Signin setIsSignedIn={setIsSignedIn} />} />
-
         <Route exact path="/" component={Home} />
-
         <Route exact path="/:userName" component={Profile} />
-
         <Route exact path="/:userName/compose" component={Compose} />
-
         <Route exact path="/:userName/:pageId" component={Page} />
-        {/* 
-        <Route path="/yourJournal" component={YourJournal} />
-        <Route path="/yourtitlelist" component={YourTitleList} />
-
-        <Route path="/otherusertitlelist" component={OtherUserTitleList} />
-        <Route path="/otheruserentry" component={OtherUserEntry} /> */}
         <Route component={NotFound} />
       </Switch>
     </Router>

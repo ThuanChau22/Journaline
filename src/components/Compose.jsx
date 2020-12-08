@@ -39,7 +39,7 @@ function Compose() {
   }
 
   return (
-    <div className="composeBody">
+    <div className="compose-body">
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="title">
           <Form.Control
