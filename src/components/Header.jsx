@@ -28,7 +28,7 @@ function Header(props) {
       const user = await Auth.currentAuthenticatedUser();
       updateUserName(user.username);
     } else {
-      if (!window.location.href.includes("/signin")) {
+      if (!window.location.href.includes("signin")) {
         history.push("/signin");
       }
     }
